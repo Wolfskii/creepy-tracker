@@ -1,20 +1,16 @@
+import logo from '../img/logo.svg'
+
 function Header () {
   return (
     <header>
-      <nav>
-
-        <input type='checkbox' id='check' />
-        <label for='check' className='check-btn'><i class='fas fa-bars' /></label>
-        <label class='logo'>Creepy tracker</label>
-
-        <ul>
-          <li><a class='active' href='#'>Kartan</a></li>
-          {/*           <li><a href='#'>About</a></li>
-          <li><a href='#'>Services</a></li>
-          <li><a href='#'>Contact</a></li>
-          <li><a href='#'>Feedback</a></li> */}
+      <nav className='navigation'>
+        <ul className='navigation-list-1'>
+          <li className='navigation-list-item'><a href='#home'>Home</a></li>
+          <li className='navigation-list-item'><a href='#features'>Features</a></li>
+          <li className='navigation-list-item'><a href=''><img className='logo' alt='logo' src={logo} /></a></li>
+          <li className='navigation-list-item'><a href='#form'>Form</a></li>
+          <li className='navigation-list-item'><a href='#team'>Team</a></li>
         </ul>
-
       </nav>
     </header>
   )
