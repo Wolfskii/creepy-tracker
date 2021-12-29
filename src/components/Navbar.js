@@ -5,7 +5,7 @@ export default function Navbar () {
     <nav style={navbarStyle}>
       <div className='container'>
         <ul>
-          <li style={logoContainerStyle}>
+          <li>
             <a href=''>
               <img alt='logo' src={logo} style={logoImgStyle} />
             </a>
@@ -24,11 +24,6 @@ const navbarStyle = {
   top: '0',
   color: '#D11342',
   backgroundColor: 'rgba(0, 0, 0, 0.5)'
-}
-
-const logoContainerStyle = {
-  display: 'flex',
-  alignItems: 'center'
 }
 
 const logoImgStyle = {

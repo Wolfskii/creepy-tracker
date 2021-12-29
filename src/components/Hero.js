@@ -1,7 +1,7 @@
 export default function Hero () {
   return (
     <div style={heroTextStyle}>
-      <h1>Creepy-kartan<span className='red'>.</span>se</h1>
+      <h1>Creepy-kartan<span>.se</span></h1>
       <h2>Upptäck hemsökta och övergivna platser nära dig</h2>
     </div>
   )
