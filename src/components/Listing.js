@@ -11,5 +11,5 @@ export default function Listing () {
 }
 
 const imgStyle = {
-  maxWidth: '280px'
+
 }
