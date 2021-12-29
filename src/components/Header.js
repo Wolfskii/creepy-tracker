@@ -12,7 +12,8 @@ export default function Header () {
 }
 
 const headerStyle = {
-  minHeight: '100vh',
+  minHeight: '70vh',
   backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background})`,
-  backgroundSize: 'cover'
+  backgroundSize: 'cover',
+  backgroundPosition: 'center'
 }

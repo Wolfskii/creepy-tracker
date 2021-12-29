@@ -1,7 +1,8 @@
 export default function Hero () {
   return (
-    <div className='hero-text' style={heroTextStyle}>
-      <h2 className='hero-heading'>Upptäck hemsökta platser nära dig...</h2>
+    <div style={heroTextStyle}>
+      <h1>Creepy-kartan<span className='red'>.</span>se</h1>
+      <h2>Upptäck hemsökta och övergivna platser nära dig</h2>
     </div>
   )
 }
@@ -11,6 +12,5 @@ const heroTextStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
-  transform: 'translate(-50%, -50%)',
-  color: 'white'
+  transform: 'translate(-50%, -50%)'
 }
