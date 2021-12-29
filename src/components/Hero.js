@@ -1,16 +1,15 @@
 export default function Hero () {
   return (
-    <div style={heroTextStyle}>
+    <div className='container' style={heroStyle}>
       <h1>Creepy-kartan<span>.se</span></h1>
-      <h2>Upptäck hemsökta och övergivna platser nära dig</h2>
+      <p className='sub-heading'>Upptäck hemsökta och övergivna platser nära dig</p>
     </div>
   )
 }
 
-const heroTextStyle = {
-  textAlign: 'center',
+const heroStyle = {
   position: 'absolute',
-  top: '50%',
+  top: '35%',
   left: '50%',
   transform: 'translate(-50%, -50%)'
 }
