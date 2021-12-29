@@ -1,19 +1,18 @@
-import logo from '../img/logo.svg'
+import Navbar from './Navbar'
+import Hero from './Hero'
+import background from '../img/hero-img.jpg'
 
-function Header () {
+export default function Header () {
   return (
-    <header>
-      <nav className='navigation'>
-        <ul className='navigation-list-1'>
-          <li className='navigation-list-item'><a href='#home'>Home</a></li>
-          <li className='navigation-list-item'><a href='#features'>Features</a></li>
-          <li className='navigation-list-item'><a href=''><img className='logo' alt='logo' src={logo} /></a></li>
-          <li className='navigation-list-item'><a href='#form'>Form</a></li>
-          <li className='navigation-list-item'><a href='#team'>Team</a></li>
-        </ul>
-      </nav>
+    <header style={headerStyle}>
+      <Navbar />
+      <Hero />
     </header>
   )
 }
 
-export default Header
+const headerStyle = {
+  minHeight: '100vh',
+  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${background})`,
+  backgroundSize: 'cover'
+}
