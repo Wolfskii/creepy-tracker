@@ -26,6 +26,9 @@ app.use((req, res, next) => {
   })
 })
 
+// Cleaning out console output
+console.clear()
+
 // Error handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500)

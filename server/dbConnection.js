@@ -17,15 +17,23 @@ db.connect = async () => {
 }
 
 db.readAll = async (collection) => {
+  db.connect()
+
   const items = await client.db(dbName).collection(collection)
     .find({}).toArray()
+
+  db.disconnect()
 
   return (items)
 }
 
 db.readById = async (collection, id) => {
+  db.connect()
+
   const item = await client.db(dbName).collection(collection)
     .find({ _id: ObjectId(id) }).toArray()
+
+  db.disconnect()
 
   return (item)
 }
@@ -36,12 +44,13 @@ db.readById = async (collection, id) => {
 // TODO: GetByAuthor
 // TODO: GetByType
 
-// TODO: Create
 db.create = async (collection, item) => {
+  db.connect()
+
   const newItem = await client.db(dbName).collection(collection)
     .insertOne(item)
 
-  console.log('Inserted document =>', newItem)
+  db.disconnect()
 
   return (newItem)
 }
