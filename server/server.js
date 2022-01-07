@@ -11,6 +11,8 @@ const port = process.env.PORT || 3000
 
 app.use(cors())
 
+// Establish connection to DB
+
 // Bodyparser middleware for handling JSON.
 app.use(bodyparser.json())
 

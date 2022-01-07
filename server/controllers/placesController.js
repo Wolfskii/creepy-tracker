@@ -1,15 +1,18 @@
 const axios = require('axios')
+const db = require('../dbConnection')
 
 const placesController = {}
 
 placesController.getPlaces = async (req, res, next) => {
-  /* const url = `${process.env.MAIN_URL}` */
-
   try {
-    /*     const response = await axios.get('/')
-    const jsonData = await response.json() */
+    await db.connect()
+    const items = await db.getAll('places')
+    await db.disconnect()
 
-    res.status(200).json('Test response')
+    // const response = await axios.get('/')
+    // const jsonData = await response.json()
+
+    res.status(200).json(items)
   } catch (error) {
     res.status(401)
   }
