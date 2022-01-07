@@ -14,4 +14,18 @@ placesController.getPlaces = async (req, res, next) => {
   }
 }
 
+placesController.getPlaceById = async (req, res, next) => {
+  const id = req.params.id
+
+  try {
+    await db.connect()
+    const item = await db.getById('places', id)
+    await db.disconnect()
+
+    res.status(200).json(item)
+  } catch (error) {
+    res.status(401)
+  }
+}
+
 module.exports = placesController

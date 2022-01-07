@@ -1,4 +1,5 @@
 const { MongoClient } = require('mongodb')
+let ObjectId = require('mongodb').ObjectId
 const db = {}
 
 const url = process.env.DB_URL
@@ -16,9 +17,17 @@ db.connect = async () => {
 }
 
 db.getAll = async (collection) => {
-  const items = await client.db(dbName).collection(collection).find({}).toArray()
+  const items = await client.db(dbName).collection(collection)
+    .find({}).toArray()
 
-  return items
+  return (items)
+}
+
+db.getById = async (collection, id) => {
+  const item = await client.db(dbName).collection(collection)
+    .find({ _id: ObjectId(id) }).toArray()
+
+  return (item)
 }
 
 db.disconnect = async () => {
