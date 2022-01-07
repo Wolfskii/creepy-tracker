@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "standard": "^16.0.4"
+  }
+}

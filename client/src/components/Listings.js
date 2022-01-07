@@ -20,7 +20,7 @@ export default function Listings () {
 
 const listingsGridStyle = {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr 1fr',
+  gridTemplateColumns: '1fr 1fr 1fr 1fr', /* fix: minimum width of 0 */
   justifyContent: 'space-between',
   gridGap: '1.5em'
 }
