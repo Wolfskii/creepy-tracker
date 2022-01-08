@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
 const cors = require('cors')
 require('dotenv').config() // For setting up env variables in .env-file
 const rateLimit = require('express-rate-limit')
@@ -22,6 +23,12 @@ app.use(express.json())
 
 // CONSOLE-CLEANUP
 console.clear()
+
+// CONNECT TO DB
+mongoose.connect(process.env.DB_URL, { useUnifiedTopology: true, useNewUrlParser: true })
+const db = mongoose.connection
+db.on('error', () => { console.log('Connection to database failed!') })
+db.once('open', async () => { console.log('Connection to database established!') })
 
 // ROUTES
 app.use('/places', require('./routes/placesRouter'))
