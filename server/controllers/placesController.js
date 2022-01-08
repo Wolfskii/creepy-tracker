@@ -39,4 +39,20 @@ placesController.create = async (req, res, next) => {
   }
 }
 
+placesController.updateById = async (req, res, next) => {
+  const updatedItem = req.body
+  const _id = req.params.id
+
+  try {
+    await db.updateById('places', updatedItem)
+
+    res.status(200).json({
+      _id: _id,
+      ...updatedItem
+    })
+  } catch (error) {
+    res.status(401)
+  }
+}
+
 module.exports = placesController

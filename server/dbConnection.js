@@ -55,7 +55,19 @@ db.create = async (collection, item) => {
   return (newItem)
 }
 
-// TODO: UpdateById
+db.updateById = async (collection, updatedItem) => {
+  const _id = updatedItem._id
+  delete updatedItem._id
+
+  db.connect()
+
+  const updatedItemRes = await client.db(dbName).collection(collection)
+    .updateOne({ _id: ObjectId(_id) }, { $set: updatedItem })
+
+  db.disconnect()
+
+  return (updatedItemRes)
+}
 
 // TODO: DeleteById
 
