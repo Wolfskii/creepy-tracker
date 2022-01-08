@@ -13,10 +13,10 @@ placesController.readAll = async (req, res, next) => {
 }
 
 placesController.readById = async (req, res, next) => {
-  const id = req.params.id
+  const _id = req.params.id
 
   try {
-    const item = await db.readById('places', id)
+    const item = await db.readById('places', _id)
 
     res.status(200).json(item)
   } catch (error) {
@@ -50,6 +50,18 @@ placesController.updateById = async (req, res, next) => {
       _id: _id,
       ...updatedItem
     })
+  } catch (error) {
+    res.status(401)
+  }
+}
+
+placesController.deleteById = async (req, res, next) => {
+  const _id = req.params.id
+
+  try {
+    const item = await db.deleteById('places', _id)
+
+    res.status(200).json(item)
   } catch (error) {
     res.status(401)
   }

@@ -69,7 +69,16 @@ db.updateById = async (collection, updatedItem) => {
   return (updatedItemRes)
 }
 
-// TODO: DeleteById
+db.deleteById = async (collection, id) => {
+  db.connect()
+
+  const item = await client.db(dbName).collection(collection)
+    .deleteOne({ _id: ObjectId(id) })
+
+  db.disconnect()
+
+  return (item)
+}
 
 db.disconnect = async () => {
   await client.close()
