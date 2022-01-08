@@ -1,35 +1,39 @@
 const express = require('express')
-const bodyparser = require('body-parser')
-const cors = require('cors')
-
 const app = express()
-
-// For setting up env variables for .env-file
-require('dotenv').config()
-
+const cors = require('cors')
+require('dotenv').config() // For setting up env variables in .env-file
+const rateLimit = require('express-rate-limit')
+const helmet = require('helmet')
 const port = process.env.PORT || 3000
 
-app.use(cors())
+// RATE LIMITING
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+})
 
-// Establish connection to DB
+// MIDDLEWARE
+app.use(cors()) // Allows cross origins
+app.use(limiter)
+app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: ["'self'"] } }))
+app.use(helmet())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
-// Bodyparser middleware for handling JSON.
-app.use(bodyparser.json())
+// CONSOLE-CLEANUP
+console.clear()
 
-// Routes setup
+// ROUTES
 app.use('/places', require('./routes/placesRouter'))
 
-// Catch 404
+// CATCH 404 - NOT FOUND
 app.use((req, res, next) => {
   res.status(404).json({
     message: 'Page not found'
   })
 })
 
-// Cleaning out console output
-console.clear()
-
-// Error handler
+// ERROR HANDLING
 app.use((err, req, res, next) => {
   res.status(err.status || 500)
   res.send(err.message || 'Internal Server Error')
